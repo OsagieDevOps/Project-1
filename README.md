@@ -126,6 +126,7 @@ for easier access from the host. This is useful for testing and development wher
 ```
 vagrant up
 ```
+
 ![alt text](image/Vagrant-up.png)
 
 This command downloads the box (if it’s not already downloaded), creates the VM, and provisions it as defined in the ```
