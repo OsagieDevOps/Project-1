@@ -25,4 +25,172 @@ Vagrant automates this by abstracting away VirtualBox's complexity. For example,
 
 ### Prerequisites:
 
+### Before starting, ensure you have:
+
+1. VirtualBox Installed:
+* Install VirtualBox here.
+
+2. Vagrant Installed:
+* Install Vagrant here.
+
+3. Command-Line Tools:
+* Access to a terminal or command prompt for running Vagrant commands.
+
+Verify the installations by running:
+
+```
+vagrant --version
+vboxmanage --version
+```
+
+The output should look like this:
+
+```
+PS C:\> vagrant --version
+Vagrant 2.4.3
+PS C:\> vboxmanage --version
+7.0.14r161095
+```
+
+## Step-by-Step Implementation:
+
+### Step 1 - Initialize a Vagrant Project
+
+
+* Create a project directory and navigate into it:
+
+```
+mkdir vagrant-vm
+cd vagrant-vm
+```
+
+* Initialize the Vagrantfile with the Ubuntu 22.04 box:
+
+```
+vagrant init bento/ubuntu-22.04
+```
+
+``` 
+bento/ubuntu-22.04
+````
+
+specifies the   base image (box) to be used.
+
+The ```vagrant init  
+    ```
+command generates a default Vagrantfile in your project directory
+
+### Step 2 - Customize the Vagrantfile
+
+* Open the ```Vagrantfile           
+           ```
+in your text editor and make the following changes:
+
+```
+Vagrant.configure("2") do |config|
+  # Specify the box
+  config.vm.box = "bento/ubuntu-22.04"
+
+  # Assign a static IP address
+  config.vm.network "private_network", ip: "192.168.56.10"
+
+  # Allocate resources
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = 2
+end
+
+  # Provisioning script to install Nginx
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get install -y nginx
+    echo "<h1>Welcome to Vagrant VM</h1>" | sudo tee /var/www/html/index.html
+  SHELL
+end
+```
+### Key Configuration Details::
+
+* Static IP: ```192.168.56.10
+             ```
+for easier access from the host. This is useful for testing and development where the VM doesn't need public internet access.
+
+* Provisioning: Runs the provided shell commands during the VM setup. In this case it installs Nginx and serves a custom HTML page.
+
+* Resources: Allocates 2 GB of memory and 2 CPU cores to the virtual machine using the VirtualBox provider.
+
+### Step 3 - Start and Provision the VM
+
+* Start the VM with:
+
+
+```
+vagrant up
+```
+![alt text](image/Vagrant-up.png)
+
+This command downloads the box (if it’s not already downloaded), creates the VM, and provisions it as defined in the ```
+       vagrantfile.
+       ```
+
+* Verify from the VirtualBox that the Virtual machine is already running:
+
+
+![alt text](image/Vm-osagie.png)
+
+
+* Access the VM:
+
+```
+vagrant ssh
+```
+![alt text](image/Vm-ssh.png)
+
+### Step 4 - Test the Web Server
+
+* Open a browser on your host machine and navigate to:
+
+```
+http://192.168.56.10
+```
+You should see the message:
+
+"Welcome to Osagie Website".
+
 ![alt text](image/Vagrant-browser.png)
+
+### Step 5 - Manage the VM
+    
+* To stop the VM without deleting it, run:
+
+```
+vagrant halt
+```
+
+* To remove the VM completely (optional), run:
+
+```
+vagrant destroy
+```
+
+This will delete all files related to the VM.
+
+### Troubleshooting
+
+1. Vagrant/VirtualBox Compatibility Issues: Ensure that your versions of Vagrant and VirtualBox are compatible. Update both to the latest versions if necessary.
+
+2. Permission Issues on Linux: Use sudo to run commands like vagrant up if you encounter permission errors.
+
+3. Networking Issues: Check if the private IP 192.168.56.10 is available. Use a different IP if it conflicts with your network.
+
+### Conclusion
+
+In this project, you:
+
+* Learned the basics of Vagrant and VirtualBox.
+* Configured a Vagrantfile to automate the creation of a VM.
+* Provisioned the VM to serve a basic web page using Nginx.
+* Managed the VM lifecycle using Vagrant commands.
+
+This setup forms a strong foundation for exploring more complex environments, including multi-VM setups, shared folders, and advanced provisioning tools.
+
+Project Completed!🎉
