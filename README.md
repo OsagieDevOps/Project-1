@@ -127,7 +127,7 @@ for easier access from the host. This is useful for testing and development wher
 vagrant up
 ```
 
-![alt text](image/Vagrant-up.png)
+![alt text](Image/Vagrant-up.png)
 
 This command downloads the box (if it’s not already downloaded), creates the VM, and provisions it as defined in the ```
        vagrantfile.
@@ -136,7 +136,7 @@ This command downloads the box (if it’s not already downloaded), creates the V
 * Verify from the VirtualBox that the Virtual machine is already running:
 
 
-![alt text](image/Vm-osagie.png)
+![alt text](Image/Vm-osagie.png)
 
 
 * Access the VM:
@@ -144,7 +144,7 @@ This command downloads the box (if it’s not already downloaded), creates the V
 ```
 vagrant ssh
 ```
-![alt text](image/Vm-ssh.png)
+![alt text](Image/Vm-ssh.png)
 
 ### Step 4 - Test the Web Server
 
@@ -157,7 +157,7 @@ You should see the message:
 
 "Welcome to Osagie Website".
 
-![alt text](image/Vagrant-browser.png)
+![alt text](Image/Vagrant-browser.png)
 
 ### Step 5 - Manage the VM
     
