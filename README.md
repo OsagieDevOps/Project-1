@@ -129,6 +129,8 @@ vagrant up
 
 ![alt text](Image/Vagrant-up.png)
 
+![alt text](Image/Vagrant-up2.png)
+
 This command downloads the box (if it’s not already downloaded), creates the VM, and provisions it as defined in the ```
        vagrantfile.
        ```
