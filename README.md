@@ -28,10 +28,10 @@ Vagrant automates this by abstracting away VirtualBox's complexity. For example,
 ### Before starting, ensure you have:
 
 1. VirtualBox Installed:
-* Install VirtualBox here.
+* Install VirtualBox [Link](https://www.virtualbox.org/).
 
 2. Vagrant Installed:
-* Install Vagrant here.
+* Install Vagrant [Link](https://developer.hashicorp.com/vagrant/install)
 
 3. Command-Line Tools:
 * Access to a terminal or command prompt for running Vagrant commands.
